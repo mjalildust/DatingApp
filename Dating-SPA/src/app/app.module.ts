@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -40,6 +42,8 @@ export function tokengetter(){
       HttpClientModule,
       FormsModule,
       RouterModule.forRoot(appRoutes),
+      BsDropdownModule.forRoot(),
+      TabsModule.forRoot(),
       JwtModule.forRoot({
          config: {
          tokenGetter: tokengetter,
