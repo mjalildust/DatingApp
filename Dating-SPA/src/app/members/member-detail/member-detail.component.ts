@@ -3,6 +3,7 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 import { UserService } from 'src/app/_services/User.service';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/User';
+import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 
 @Component({
   selector: 'app-member-detail',
@@ -11,19 +12,17 @@ import { User } from 'src/app/models/User';
 })
 export class MemberDetailComponent implements OnInit {
   user: User;
-  constructor(private alertify: AlertifyService, private userService: UserService, private rout: ActivatedRoute) { 
 
-  }
+
+  constructor(private alertify: AlertifyService, private userService: UserService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.loadUser();
+    this.route.data.subscribe( data => {
+      // tslint:disable-next-line: no-string-literal
+      this.user = data['user'];
+    });
+
+  
   }
 
-  loadUser(){
-    this.userService.getUser(+this.rout.snapshot.params['id']).subscribe((user: User) => {
-      this.user = user;
-    }, error =>{
-    this.alertify.error(error);
-    });
-  }
 }
