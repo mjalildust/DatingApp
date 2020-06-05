@@ -24,6 +24,9 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { AlertifyService } from './_services/alertify.service';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
+import { MemberEditeComponent } from './members/member-edite/member-edite.component';
+import { MemberEditeResolver } from './_resolvers/member-edite.resolver';
+import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 
 export function tokengetter(){
    return localStorage.getItem('token');
@@ -39,7 +42,8 @@ export function tokengetter(){
       ListsComponent,
       MessagesComponent,
       MemberCardComponent,
-      MemberDetailComponent
+      MemberDetailComponent,
+      MemberEditeComponent
    ],
    imports: [
       BrowserModule,
@@ -60,6 +64,9 @@ export function tokengetter(){
       ErrorInterceptorProvider,
       MemberDetailResolver,
       MemberListResolver,
+      MemberEditeResolver,
+      AuthGuard,
+      PreventUnsavedChanges
    ],
    bootstrap: [
       AppComponent

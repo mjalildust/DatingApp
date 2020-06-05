@@ -21,8 +21,6 @@ export class MemberDetailComponent implements OnInit {
       // tslint:disable-next-line: no-string-literal
       this.user = data['user'];
     });
-
-  
   }
 
 }
