@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using AutoMapper;
+using DatingApp.api.Helper;
 
 namespace DatingApp.api
 {
@@ -50,6 +51,8 @@ namespace DatingApp.api
                     ValidateAudience =false
                 };
             });
+
+            services.AddScoped<LogUserActivity>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Pipe } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import {TimeAgoPipe} from 'time-ago-pipe';
+import {PipeTransform} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -27,10 +29,22 @@ import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { MemberEditeComponent } from './members/member-edite/member-edite.component';
 import { MemberEditeResolver } from './_resolvers/member-edite.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
+import { from } from 'rxjs';
+
+
+// tslint:disable-next-line: use-pipe-transform-interface
+@Pipe ({
+   name: 'timeAgo',
+   pure: false
+})
+export class TimeAgoExtendsPipe extends TimeAgoPipe {  transform(value: string): string {
+   return super.transform(value);
+ }}
 
 export function tokengetter(){
    return localStorage.getItem('token');
 }
+
 
 @NgModule({
    declarations: [
@@ -39,6 +53,7 @@ export function tokengetter(){
       HomeComponent,
       RegisterComponent,
       MemberListComponent,
+      TimeAgoExtendsPipe,
       ListsComponent,
       MessagesComponent,
       MemberCardComponent,
