@@ -9,6 +9,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import {TimeAgoPipe} from 'time-ago-pipe';
 import {PipeTransform} from '@angular/core';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -65,6 +66,7 @@ export function tokengetter(){
       BrowserModule,
       HttpClientModule,
       FormsModule,
+      ButtonsModule.forRoot(),
       PaginationModule.forRoot(),
       ReactiveFormsModule,
       RouterModule.forRoot(appRoutes),
