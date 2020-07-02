@@ -32,6 +32,7 @@ import { MemberEditeComponent } from './members/member-edite/member-edite.compon
 import { MemberEditeResolver } from './_resolvers/member-edite.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { from } from 'rxjs';
+import { ListsResolver } from './_resolvers/lists-resolver';
 
 
 // tslint:disable-next-line: use-pipe-transform-interface
@@ -86,7 +87,8 @@ export function tokengetter(){
       MemberListResolver,
       MemberEditeResolver,
       AuthGuard,
-      PreventUnsavedChanges
+      PreventUnsavedChanges,
+      ListsResolver
    ],
    bootstrap: [
       AppComponent
